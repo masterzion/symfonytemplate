@@ -8,8 +8,9 @@ install:
 
 # Acceptance tests
 before_script:
-  - if [[ $TRAVIS_PHP_VERSION -ne hhvm ]]; chmod +x travis/nginx/nginx.sh
-  - if [[ $TRAVIS_PHP_VERSION -ne hhvm ]]; travis/nginx/nginx.sh
+  - echo $TRAVIS_PHP_VERSION
+  - if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]] ; chmod +x travis/nginx/nginx.sh
+  - if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]] ; travis/nginx/nginx.sh
   - pear install PHP_CodeSniffer
   - phpenv rehash
 
