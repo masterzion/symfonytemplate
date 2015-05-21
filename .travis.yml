@@ -15,9 +15,9 @@ before_script:
   - LOCALDIR="$(pwd)/public"
   - sudo sed -i "s#LOCAL_DIR#${LOCALDIR}#" /etc/nginx/sites-available/default
   # php5 fpm
-  - cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
-  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
-  - sudo service nginx restart
+  - if [[ $TRAVIS_PHP_VERSION =~ ^hhvm ]]; cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+  - if [[ $TRAVIS_PHP_VERSION =~ ^hhvm ]]; ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+  - if [[ $TRAVIS_PHP_VERSION =~ ^hhvm ]]; sudo service nginx restart
   - pear install PHP_CodeSniffer
   - phpenv rehash
 
