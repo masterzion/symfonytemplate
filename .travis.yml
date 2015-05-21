@@ -21,7 +21,7 @@ before_script:
 
 
 script:
-  - phpcs src
+  - /usr/bin/phpcs src
   - cd app
   - phpunit
 
