@@ -11,5 +11,6 @@ What's inside?
 - [x] Travis
 - [x] phpunit
 - [x] phpcs
+- [x] hhvm
 - [ ] behat
 
