@@ -19,7 +19,7 @@ namespace AppBundle\Tests\Controller;
  * @license  http://opensource.org/licenses/gpl-license.php GNU Public License
  * @link     none
  */
-class DefaultControllerWebTest extends PHPUnit_Extensions_SeleniumTestCase
+class DefaultControllerWebTest extends \PHPUnit_Extensions_SeleniumTestCase
 {
     public static $browsers = array(
       array(
