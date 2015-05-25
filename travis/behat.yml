@@ -12,7 +12,7 @@ default:
                 debug: true
             bundle: AppBundle
         Behat\MinkExtension\Extension:
-            base_url: 'http://127.0.0.1:8000'
+            base_url: 'http://localhost'
             javascript_session: selenium2
             browser_name: firefox
             goutte: ~
