@@ -1,5 +1,6 @@
 server {
-    server_name domain.tld www.domain.tld;
+    listen 80;
+    server_name localhost;
     root LOCAL_DIR/web;
 
     location / {
