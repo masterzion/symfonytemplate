@@ -21,14 +21,10 @@ script:
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then vendor/behat/behat/bin/behat --config travis/behat.yml; fi
   - cd app
   - ../vendor/phpunit/phpunit/phpunit
-  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cat /var/log/nginx/access.log; fi
-  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cat /var/log/nginx/error.log; fi
-  - pwd
-  - ls
-
 
 after_script:
-
+  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cat /var/log/nginx/access.log; fi
+  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cat /var/log/nginx/error.log; fi
 
 notifications:
   email: "master.zion@gmail.com"
