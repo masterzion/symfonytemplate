@@ -2,6 +2,8 @@ server {
     server_name localhost;
     root LOCAL_DIR/web;
 
+    index  app_dev.php;
+
     location / {
         try_files $uri /app_dev.php$is_args$args;
     }
@@ -13,8 +15,5 @@ server {
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param HTTPS off;
     }
-
-    error_log LOCAL_DIR/project_error.log;
-    access_log LOCAL_DIR/project_access.log;
 }
 
