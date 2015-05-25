@@ -8,13 +8,18 @@ server {
         try_files $uri @rewriteapp;
     }
 
+    # static content
+    location ~* ^.+\.(wsf|xml|pdf|doc|jpg|jpeg|gif|css|png|js|ico|ttf|eot|otf|svg)$ {
+        expires 15d;
+    }
+
     location @rewriteapp {
         # rewrite all to app_dev.php
         rewrite ^(.*)$ /app_dev.php/$1 last;
     }
 
     location ~ ^/(app|app_dev)\.php(/|$) {
-        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_pass   127.0.0.1:9000;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
