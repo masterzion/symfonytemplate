@@ -11,10 +11,6 @@ install:
 before_script:
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then sudo travis/nginx/nginx.sh; fi
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then pear install pear install pear/PHP_CodeSniffer; fi
-  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then pear uninstall phpunit/PHPUnit; fi
-  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then pear uninstall phpunit/PHPUnit_Selenium; fi
-  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then pear install phpunit/PHPUnit; fi
-  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then pear install phpunit/PHPUnit_Selenium; fi
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then phpenv rehash; fi
 
 script:
