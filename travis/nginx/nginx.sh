@@ -8,4 +8,7 @@ cat /etc/nginx/sites-available/default
   # php5 fpm
 cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
 ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+chmod -R 777 $LOCALDIR/app/logs/
+chmod -R 777 $LOCALDIR/app/cache/
+
 service nginx restart
