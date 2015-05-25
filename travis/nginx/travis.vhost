@@ -14,5 +14,7 @@ server {
         fastcgi_param HTTPS off;
     }
 
+    error_log LOCAL_DIR/project_error.log;
+    access_log LOCAL_DIR/project_access.log;
 }
 

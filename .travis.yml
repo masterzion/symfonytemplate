@@ -10,7 +10,7 @@ install:
 
 # Acceptance tests
 before_script:
-  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then pear install pear install pear/PHP_CodeSniffer; fi
+  - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then pear install pear/PHP_CodeSniffer; fi
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then phpenv rehash; fi
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf; fi
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm; fi
@@ -21,6 +21,9 @@ script:
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then vendor/behat/behat/bin/behat --config travis/behat.yml; fi
   - cd app
   - ../vendor/phpunit/phpunit/phpunit
+  - cd ..
+  - cat LOCAL_DIR/project_error.log;
+  - cat LOCAL_DIR/project_access.log;
 
 after_script:
 
