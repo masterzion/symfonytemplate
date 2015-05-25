@@ -3,13 +3,17 @@ server {
     server_name localhost;
     root LOCAL_DIR/web;
 
+    index  app_dev.php;
+
     location / {
-        # try to serve file directly, fallback to app.php
-        try_files $uri /app.php$is_args$args;
+        try_files $uri /app_dev.php$is_args$args;
     }
-    # DEV
-    # This rule should only be placed on your development environment
-    # In production, don't include this and don't deploy app_dev.php or config.php
+
+    # static content
+    location ~* ^.+\.(wsf|xml|pdf|doc|jpg|jpeg|gif|css|png|js|ico|ttf|eot|otf|svg)$ {
+        expires 15d;
+    }
+    
     location ~ ^/(app_dev|config)\.php(/|$) {
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
@@ -17,19 +21,11 @@ server {
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param HTTPS off;
     }
-    # PROD
-    location ~ ^/app\.php(/|$) {
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param HTTPS off;
-        # Prevents URIs that include the front controller. This will 404:
-        # http://domain.tld/app.php/some-path
-        # Remove the internal directive to allow URIs like this
-        internal;
-    }
 
-    error_log /var/log/nginx/project_error.log;
-    access_log /var/log/nginx/project_access.log;
+    gzip on;
+    gzip_comp_level 2;
+    gzip_proxied any;
+    gzip_min_length  1000;
+    gzip_disable     "MSIE [1-6]\."
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 }
