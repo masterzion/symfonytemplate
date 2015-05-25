@@ -28,27 +28,6 @@ class DefaultControllerWebTest extends \PHPUnit_Extensions_SeleniumTestCase
         'host'    => 'localhost',
         'port'    => 4444,
         'timeout' => 30000,
-      ),
-      array(
-        'name'    => 'Safari on MacOS X',
-        'browser' => '*safari',
-        'host'    => 'my.macosx.box',
-        'port'    => 4444,
-        'timeout' => 30000,
-      ),
-      array(
-        'name'    => 'Safari on Windows XP',
-        'browser' => '*custom C:\Program Files\Safari\Safari.exe -url',
-        'host'    => 'my.windowsxp.box',
-        'port'    => 4444,
-        'timeout' => 30000,
-      ),
-      array(
-        'name'    => 'Internet Explorer on Windows XP',
-        'browser' => '*iexplore',
-        'host'    => 'my.windowsxp.box',
-        'port'    => 4444,
-        'timeout' => 30000,
       )
     );
 
