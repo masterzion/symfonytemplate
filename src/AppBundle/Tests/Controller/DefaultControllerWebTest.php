@@ -1,6 +1,25 @@
 <?php
+/**
+ * DefaultControllerWebTest Class Doc Comment
+ * PHP version 5.5
+ * @category Template
+ * @package  AppBundle
+ * @author   Jairo M <master.zion@gmail.com>
+ * @license  http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @link     none
+ */
+namespace AppBundle\Tests\Controller;
 
-class WebTest extends PHPUnit_Extensions_SeleniumTestCase
+/**
+ * DefaultControllerWebTest Class Doc Comment
+ * PHP version 5.5
+ * @category Template
+ * @package  AppBundle
+ * @author   Jairo M <master.zion@gmail.com>
+ * @license  http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @link     none
+ */
+class DefaultControllerWebTest extends PHPUnit_Extensions_SeleniumTestCase
 {
     public static $browsers = array(
       array(
@@ -33,11 +52,29 @@ class WebTest extends PHPUnit_Extensions_SeleniumTestCase
       )
     );
 
+    /**
+    * DefaultControllerTest Class Doc Comment
+    * PHP version 5.5
+    * @category Template
+    * @package  AppBundle
+    * @author   Jairo M <master.zion@gmail.com>
+    * @link     none
+    * @return   null
+    */
     protected function setUp()
     {
         $this->setBrowserUrl('http://127.0.0.1:8000/');
     }
 
+    /**
+    * DefaultControllerTest Class Doc Comment
+    * PHP version 5.5
+    * @category Template
+    * @package  AppBundle
+    * @author   Jairo M <master.zion@gmail.com>
+    * @link     none
+    * @return   null
+    */
     public function testTitle()
     {
         $this->open('http://127.0.0.1:8000/');
