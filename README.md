@@ -12,5 +12,7 @@ What's inside?
 - [x] phpunit
 - [x] phpcs
 - [x] hhvm
-- [ ] behat
+- [x] behat
+- [x] Selenium (Under development)
+
 

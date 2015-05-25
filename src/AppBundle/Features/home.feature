@@ -6,4 +6,4 @@ Feature: Empty home page
   Scenario: Empty home page
     Given I am on "/"
     Then the response status code should be 200
-    And I should see "empty home page"
+    And I should see "Homepage."

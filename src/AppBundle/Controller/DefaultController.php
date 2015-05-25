@@ -26,7 +26,7 @@ class DefaultController extends Controller
 {
     /**
      * Return rendered page
-     * @Route("/app/example", name="homepage")
+     * @Route("/", name="homepage")
      * @return string
      */
     public function indexAction()
