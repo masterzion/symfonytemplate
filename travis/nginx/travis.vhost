@@ -3,10 +3,10 @@ server {
     server_name localhost;
     root LOCAL_DIR/web;
 
-    index  app_dev.php;
+    index  app.php;
 
     location / {
-        try_files $uri /app_dev.php$is_args$args;
+        try_files $uri $uri/ /index.php?$uri&$args;
     }
 
     # static content
@@ -14,12 +14,12 @@ server {
         expires 15d;
     }
     
-    location ~ ^/(app_dev|config)\.php(/|$) {
+    location ~ \.php($|/) {
         fastcgi_pass   127.0.0.1:9000;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        fastcgi_index app.php;
+        fastcgi_pass_header Authorization;
         include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param HTTPS off;
+        fastcgi_param SCRIPT_FILENAME $document_root/$fastcgi_script_name;
     }
 
     gzip on;
