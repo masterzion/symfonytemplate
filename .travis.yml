@@ -14,11 +14,7 @@ before_script:
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then phpenv rehash; fi
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf; fi
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm; fi
-  - "sh -e /etc/init.d/xvfb start"
-  - "export DISPLAY=:99.0"
-  - "wget http://selenium.googlecode.com/files/selenium-server-standalone-2.37.0.jar"
-  - "java -jar selenium-server-standalone-2.37.0.jar > /dev/null &"
-  - sleep 5
+
 
 script:
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then phpcs src; fi

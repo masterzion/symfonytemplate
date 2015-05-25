@@ -1,9 +1,9 @@
 server {
     server_name localhost;
-        root LOCAL_DIR/web;
+    root LOCAL_DIR/web;
 
     location / {
-        try_files $uri /app.php$is_args$args;
+        try_files $uri /app_dev.php$is_args$args;
     }
 
     location ~ ^/(app_dev|config)\.php(/|$) {
@@ -14,16 +14,5 @@ server {
         fastcgi_param HTTPS off;
     }
 
-    location ~ ^/app\.php(/|$) {
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param HTTPS off;
-        internal;
-    }
-
-    error_log /var/log/nginx/project_error.log;
-    access_log /var/log/nginx/project_access.log;
 }
 
