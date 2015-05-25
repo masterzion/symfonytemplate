@@ -2,7 +2,7 @@
 apt-get install nginx
 cp -f ./travis/nginx/nginx.conf /etc/nginx/nginx.conf
 cp -f ./travis/nginx/travis.vhost /etc/nginx/sites-available/default
-LOCALDIR="$(pwd)/public"
+LOCALDIR="$(pwd)"
 sed -i "s#LOCAL_DIR#${LOCALDIR}#" /etc/nginx/sites-available/default
 cat /etc/nginx/sites-available/default
   # php5 fpm
